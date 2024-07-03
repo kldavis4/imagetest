@@ -2,6 +2,7 @@
 const nextConfig = {
     images: {
         deviceSizes: [1024, 2048],
+        domains: ['api.armenia.travel', 'cdn.sanity.io', 'www.campervannorway.com'],
         remotePatterns: [{
             protocol: 'https',
             hostname: 'api.armenia.travel',
