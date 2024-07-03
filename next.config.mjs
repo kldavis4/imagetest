@@ -6,17 +6,17 @@ const nextConfig = {
         remotePatterns: [{
             protocol: 'https',
             hostname: 'api.armenia.travel',
-            pathname: 'storage/*'
+            pathname: '/storage/**'
         },
         {
             protocol: 'https',
             hostname: 'cdn.sanity.io',
-            pathname: 'images/*'
+            pathname: '/images/**'
         },
         {
             protocol: 'https',
             hostname: 'www.campervannorway.com',
-            pathname: 'assets/*'
+            pathname: '/assets/**'
         }]
     }
 };
