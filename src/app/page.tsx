@@ -7,8 +7,8 @@ export default function Home() {
     images.push({
       src: "https://cdn.sanity.io/images/y25r8d4i/production/19da7ddf12544b5f17203b084ed4be52f006974f-2048x1365.webp?rect=342,0,1365,1365&w=1000&h=1000&fit=crop&auto=format",
       alt: "Next.js Logo",
-      width: 250,
-      height: 250,
+      width: 500,
+      height: 500,
       quality: i
     })
   }
