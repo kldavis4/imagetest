@@ -38,7 +38,7 @@ export async function GET(request: NextRequest) {
     return NextResponse.redirect(url, {
       status: 307,
     });
-  } catch (e) {
+  } catch (e: any) {
     return NextResponse.json({ message: e.message }, { status: 401 });
   }
 }
