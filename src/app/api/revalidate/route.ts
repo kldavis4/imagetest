@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export const fetchCache = "force-no-store";
 
-const knownPaths = {
+const knownPaths: { [key: string]: string } = {
   "/pages/homepage": "/",
   robots: "/robots.txt",
 };
