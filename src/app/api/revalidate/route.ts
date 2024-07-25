@@ -21,12 +21,12 @@ const getRevalidationPath = (slug?: string | null) => {
 
 export async function GET(request: NextRequest) {
   try {
-    if (
-      request.nextUrl.searchParams.get("secret") !==
-      process.env.WP_PREVIEW_SECRET
-    ) {
-      return NextResponse.json({ message: "Invalid token" }, { status: 401 });
-    }
+    // if (
+    //   request.nextUrl.searchParams.get("secret") !==
+    //   process.env.WP_PREVIEW_SECRET
+    // ) {
+    //   return NextResponse.json({ message: "Invalid token" }, { status: 401 });
+    // }
 
     const slug = request.nextUrl.searchParams.get("slug");
     const path = getRevalidationPath(slug);
@@ -35,9 +35,10 @@ export async function GET(request: NextRequest) {
     url.pathname = path;
     url.searchParams.delete("slug");
     url.searchParams.delete("secret");
-    return NextResponse.redirect(url, {
-      status: 307,
-    });
+    // return NextResponse.redirect(url, {
+    //   status: 307,
+    // });
+    return NextResponse.json({ message: "Revalidation started" });
   } catch (e: any) {
     return NextResponse.json({ message: e.message }, { status: 401 });
   }
