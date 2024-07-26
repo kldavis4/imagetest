@@ -9,8 +9,8 @@ export const revalidate = 120;
 //   ]
 // }
 
-export default async function Slug({ params }: { params: { slug: string[] } }) {
-  const slug = params.slug.join('|')
+export default async function Slug({ params }: { params: { market: string, slug: string[] } }) {
+  const slug = params.market + '*' + params.slug.join('|')
   const data = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/data/?slug=${slug}`).then((res) => res.json());
   return (
     <main>
