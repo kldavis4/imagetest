@@ -3,7 +3,7 @@ export default async function Lightbean({ params }: { params: {} }) {
     return (
       <main>
         <div>
-          {data}
+          {JSON.stringify(data)}
         </div>
       </main>
     );
