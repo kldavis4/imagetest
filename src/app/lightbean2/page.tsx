@@ -15,11 +15,9 @@ export default async function Lightbean({ params }: { params: {} }) {
         'bianco-48x24-v2',
         'bianco-24x24',
     ]
-    let results = [];
-    for (const key of keys) {
-        const res = await fetch(`http://api.lightbeans.com/organizations/banas-porcelain/products/${key}`).then((res) => res.json());
-        results.push(res);
-    }
+    const results = await Promise.all(keys.map(async (key) => {
+        return await fetch(`http://api.lightbeans.com/organizations/banas-porcelain/products/${key}`).then((res) => res.json());
+    }))
 
     return (
       <main>
