@@ -1,5 +1,4 @@
 import Image from "next/image";
-import styles from "./page.module.css";
 
 export default function Home() {
   const images = []
@@ -13,11 +12,11 @@ export default function Home() {
     })
   }
   return (
-    <main className={styles.main}>
+    <main>
 
-      <div className={styles.grid}>
+      <div>
         {images.map((image, index) => (
-          <div key={index} className={styles.card}>
+          <div key={index}>
             <Image {...image} />
             </div>
         ))}
