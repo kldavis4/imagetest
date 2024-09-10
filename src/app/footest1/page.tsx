@@ -11,6 +11,7 @@ export default function Home() {
       quality: i
     })
   }
+  console.log('here')
   return (
     <main>
 
