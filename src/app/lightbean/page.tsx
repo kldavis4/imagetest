@@ -1,4 +1,4 @@
-export const revalidate = 60;
+// export const revalidate = 60;
 // TODO need source code
 export default async function Lightbean({ params }: { params: {} }) {
     const keys = [
@@ -19,7 +19,7 @@ export default async function Lightbean({ params }: { params: {} }) {
     for (const key of keys) {
         const res = await fetch(`http://api.lightbeans.com/organizations/banas-porcelain/products/${key}`, {
           next: {
-            tags: ['lightbean'],
+            tags: ['lightbean']
           }
         }).then((res) => res.json());
         results.push(res);
