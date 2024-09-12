@@ -24,6 +24,10 @@ const nextConfig = {
             {
                 source: '/api/foobar/:path*',
                 destination: 'https://resolutesportfencing.com/home/'
+            },
+            {
+                source: '/api/fizzbo/:path*',
+                destination: 'https://www.housewares.com/'
             }
         ];
     }
