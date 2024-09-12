@@ -18,6 +18,14 @@ const nextConfig = {
             hostname: 'www.campervannorway.com',
             pathname: '/assets/**'
         }]
+    },
+    rewrites: async () => {
+        return [
+            {
+                source: '/api/foobar/:path*',
+                destination: 'https://resolutesportfencing.com/home/'
+            }
+        ];
     }
 };
 
