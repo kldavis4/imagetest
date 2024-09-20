@@ -1,4 +1,4 @@
-// export const dynamic = "force-static";
+export const dynamic = "force-static";
 // export const revalidate = 120;
 
 // export async function generateStaticParams() {
