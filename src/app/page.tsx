@@ -22,7 +22,7 @@ export default async function Home() {
     <main className={styles.main}>
 
       <div className={styles.grid}>
-        <h1>UPDATE 4 {JSON.stringify(res)}</h1>
+        <h1>UPDATE 5 {JSON.stringify(res)}</h1>
         {images.map((image, index) => (
           <div key={index} className={styles.card}>
             <Image {...image} />
