@@ -14,6 +14,7 @@ export default async function Slug({ params }: { params: { market: string, slug:
   const data = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/data/?slug=${slug}`,
       {
           next: {
+              tags: ['content'],
               revalidate: 600
           }
       }).then((res) => res.json());
