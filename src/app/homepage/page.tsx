@@ -28,6 +28,7 @@ export default async function Homepage({ params }: { params: {} }) {
 
     return (
         <main>
+            <>UPDATE 1</>
             <div>
                 {JSON.stringify(results)}
             </div>
