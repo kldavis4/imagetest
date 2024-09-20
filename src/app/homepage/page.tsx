@@ -28,7 +28,7 @@ export default async function Homepage({ params }: { params: {} }) {
 
     return (
         <main>
-            <>UPDATE 2</>
+            <>UPDATE 3</>
             <div>
                 {JSON.stringify(results)}
             </div>
