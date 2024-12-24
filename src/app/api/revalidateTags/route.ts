@@ -16,8 +16,9 @@ export async function GET(request: NextRequest) {
         revalidateTag(tag)
       })
 
-    return NextResponse.json({ message: "Revalidation started" });
+    // return NextResponse.json({ message: "Revalidation started" });
   // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+    return new Response(null, { status: 200 });
   } catch (e: any) {
     return NextResponse.json({ message: e.message }, { status: 401 });
   }
