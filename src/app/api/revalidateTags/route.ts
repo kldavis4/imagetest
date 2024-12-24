@@ -2,7 +2,7 @@ import { revalidateTag } from "next/cache";
 import type { NextRequest  } from "next/server";
 import { NextResponse } from "next/server";
 
-export const preferredRegion = 'lhr1'
+// export const preferredRegion = 'lhr1'
 
 async function handleRevalidate(request: NextRequest) {
   try {
