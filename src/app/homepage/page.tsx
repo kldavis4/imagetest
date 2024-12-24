@@ -1,6 +1,6 @@
 // export const revalidate = 60;
 // TODO need source code
-export default async function Homepage({ params }: { params: {} }) {
+export default async function Homepage() {
     const keys = [
         'noce-48x24-v2',
         // 'noce-24x24',
