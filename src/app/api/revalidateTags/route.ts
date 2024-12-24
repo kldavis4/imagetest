@@ -6,6 +6,7 @@ import { NextResponse } from "next/server";
 async function handleRevalidate(request: NextRequest) {
   try {
     const tags = request.nextUrl.searchParams.getAll("tag");
+    const sleep = request.nextUrl.searchParams.get("sleep");
 
     // console.log("Before revalidate: ", tags)
     // revalidateTag(tags.join(","));
@@ -15,6 +16,10 @@ async function handleRevalidate(request: NextRequest) {
         console.info('Revalidating tag:', tag)
         revalidateTag(tag)
       })
+
+    if (sleep) {
+      await new Promise((resolve) => setTimeout(resolve, parseInt(sleep, 10)));
+    }
 
     // return NextResponse.json({ message: "Revalidation started" });
     // biome-ignore lint/suspicious/noExplicitAny: <explanation>
