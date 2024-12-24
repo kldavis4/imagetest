@@ -24,9 +24,11 @@ async function handleRevalidate(request: NextRequest) {
 }
 
 export async function POST(request: NextRequest) {
+  console.info('POST request')
   return handleRevalidate(request);
 }
 
 export async function GET(request: NextRequest) {
+  console.info('GET request')
   return handleRevalidate(request);
 }
