@@ -2,9 +2,8 @@ import { revalidateTag } from "next/cache";
 import type { NextRequest  } from "next/server";
 import { NextResponse } from "next/server";
 
-export const preferredRegion = '1hr1'
 
-export async function POST(request: NextRequest) {
+export async function GET(request: NextRequest) {
   try {
     const tags = request.nextUrl.searchParams.getAll("tag");
 
@@ -17,9 +16,8 @@ export async function POST(request: NextRequest) {
         revalidateTag(tag)
       })
 
-    // return NextResponse.json({ message: "Revalidation started" });
+    return NextResponse.json({ message: "Revalidation started" });
   // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-    return new Response(null, { status: 200 });
   } catch (e: any) {
     return NextResponse.json({ message: e.message }, { status: 401 });
   }
