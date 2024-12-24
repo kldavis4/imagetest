@@ -7,9 +7,15 @@ export async function GET(request: NextRequest) {
   try {
     const tags = request.nextUrl.searchParams.getAll("tag");
 
-    console.log("Before revalidate: ", tags)
-    revalidateTag(tags.join(","));
-    console.log("After revalidate")
+    // console.log("Before revalidate: ", tags)
+    // revalidateTag(tags.join(","));
+    // console.log("After revalidate")
+  tags.filter((tag) => tag)
+      .forEach((tag) => {
+        console.info('Revalidating tag:', tag)
+        revalidateTag(tag)
+      })
+
     return NextResponse.json({ message: "Revalidation started" });
   // biome-ignore lint/suspicious/noExplicitAny: <explanation>
   } catch (e: any) {
