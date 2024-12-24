@@ -17,9 +17,11 @@ async function handleRevalidate(request: NextRequest) {
         revalidateTag(tag)
       })
 
+    console.log("Sleeping for: ", sleep)
     if (sleep) {
       await new Promise((resolve) => setTimeout(resolve, parseInt(sleep, 10)));
     }
+    console.log("After sleep")
 
     // return NextResponse.json({ message: "Revalidation started" });
     // biome-ignore lint/suspicious/noExplicitAny: <explanation>
