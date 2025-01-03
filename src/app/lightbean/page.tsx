@@ -1,4 +1,6 @@
 export const revalidate = 60;
+import { notFound } from 'next/navigation';
+
 // TODO need source code
 export default async function Lightbean() {
     const keys = [
@@ -24,6 +26,11 @@ export default async function Lightbean() {
           }
         }).then((res) => res.json());
         results.push(res);
+    }
+
+    const now = new Date();
+    if (now.getTime() < 1735866324000) {
+      notFound();
     }
 
     return (
