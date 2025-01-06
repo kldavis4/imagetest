@@ -21,7 +21,7 @@ export default async function Lightbean() {
     for (const key of keys) {
         const res = await fetch(`http://api.lightbeans.com/organizations/banas-porcelain/products/${key}`, {
           next: {
-            tags: ['lightbean'],
+            tags: ['lightbean', 'darkbean'],
             revalidate: 600
           }
         }).then((res) => res.json());
@@ -29,7 +29,7 @@ export default async function Lightbean() {
     }
 
     const now = new Date();
-    if (now.getTime() < 1735866864000) {
+    if (now.getTime() < 1736195045000) {
       console.log(now.getTime())
       notFound();
     }
