@@ -17,19 +17,19 @@ export default async function Lightbean() {
         'bianco-48x24-v2',
         'bianco-24x24',
     ]
-    const results = [];
-    for (const key of keys) {
-        const res = await fetch(`http://api.lightbeans.com/organizations/banas-porcelain/products/${key}`, {
-          next: {
-            tags: ['lightbean', 'darkbean'],
-            revalidate: 600
-          }
-        }).then((res) => res.json());
-        results.push(res);
-    }
+    const results: string[] = [];
+    // for (const key of keys) {
+    //     const res = await fetch(`http://api.lightbeans.com/organizations/banas-porcelain/products/${key}`, {
+    //       next: {
+    //         tags: ['lightbean', 'darkbean'],
+    //         revalidate: 600
+    //       }
+    //     }).then((res) => res.json());
+    //     results.push(res);
+    // }
 
     const now = new Date();
-    if (now.getTime() < 1736966955000) {
+    if (now.getTime() < 1736967195000) {
       console.log(now.getTime())
       notFound();
     }
