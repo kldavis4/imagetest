@@ -28,6 +28,12 @@ export default async function Lightbean() {
     //     results.push(res);
     // }
 
+    const now = new Date();
+    if (now.getTime() < 1737471358000) {
+      console.log(now.getTime())
+      notFound();
+    }
+
     return (
       <main>
         <div>
