@@ -4,14 +4,14 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "NEXT_PHASE='phase-production-build' next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
     "react": "^18",
     "react-dom": "^18",
-    "next": "15.1.4"
+    "next": "15.1.5"
   },
   "devDependencies": {
     "@types/node": "^20",
