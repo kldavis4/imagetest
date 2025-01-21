@@ -18,15 +18,16 @@ export default async function Lightbean() {
         'bianco-24x24',
     ]
     const results: string[] = [];
-    // for (const key of keys) {
-    //     const res = await fetch(`http://api.lightbeans.com/organizations/banas-porcelain/products/${key}`, {
-    //       next: {
-    //         tags: ['lightbean', 'darkbean'],
-    //         revalidate: 600
-    //       }
-    //     }).then((res) => res.json());
-    //     results.push(res);
-    // }
+    for (const key of keys) {
+        const res = await fetch(`http://api.lightbeans.com/organizations/banas-porcelain/products/${key}`, {
+          next: {
+            tags: ['lightbean', 'darkbean'],
+            revalidate: 600
+          }
+        }).then((res) => res.json());
+        results.push(res);
+        break // only fetch first
+    }
 
     const now = new Date();
     if (now.getTime() < 1737471358000) {
