@@ -8,7 +8,7 @@ export function middleware(req: NextRequest) {
   if (pathname.startsWith('/js')) {
     const response = NextResponse.next()
     // Add or modify headers
-    response.headers.set('X-Custom-Header', 'MyCustomHeaderValue')
+    response.headers.set('ETag', 'CustomETagValue')
     return response
   }
 
