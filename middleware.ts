@@ -1,0 +1,15 @@
+import { NextResponse } from 'next/server'
+import type { NextRequest } from 'next/server'
+
+export function middleware(req: NextRequest) {
+  // Check if the request is for a static asset in the public folder
+  const { pathname } = req.nextUrl
+  if (pathname.startsWith('/public')) {
+    const response = NextResponse.next()
+    // Add or modify headers
+    response.headers.set('X-Custom-Header', 'MyCustomHeaderValue')
+    return response
+  }
+
+  return NextResponse.next()
+}
