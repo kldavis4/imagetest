@@ -9,6 +9,7 @@ export function middleware(req: NextRequest) {
     const response = NextResponse.next()
     // Add or modify headers
     response.headers.set('ETag', 'CustomETagValue')
+    response.headers.set('X-Custom-Header', 'CustomHeaderValue')
     return response
   }
 
