@@ -1,4 +1,22 @@
 /** @type {import('next').NextConfig} */
+
+const mediaBaseUrl = process.env.MEDIA_BASE_URL || 'https://media.elkjop.com';
+const useNextImageOptimization =
+    process.env.USE_NEXT_IMAGE_OPTIMIZATION === "true";
+const cmsServicePreviewUrl = process.env.BASE_URL_CMS_PREVIEW;
+const cmsPreviewHostName = cmsServicePreviewUrl?.split("/")[2] ?? "";
+
+const cmsRewrites = [
+    {
+        source: "/content/:path*",
+        destination: `${mediaBaseUrl}/contentmedia/assets/:path*`,
+    },
+    {
+        source: "/blueprint/:path*",
+        destination: `https://${cmsPreviewHostName}/blueprint/:path*`,
+    },
+];
+
 const nextConfig = {
     images: {
         deviceSizes: [1024, 2048],
@@ -21,6 +39,7 @@ const nextConfig = {
     },
     rewrites: async () => {
         return [
+            ...cmsRewrites,
             {
                 source: '/api/foobar/:path*',
                 destination: 'https://resolutesportfencing.com/home/'
