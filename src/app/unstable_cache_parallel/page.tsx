@@ -14,6 +14,9 @@ const test = async () => {
   const data = await fakeFetch(id);
   return Date.now() - start;
 }
+export async function generateStaticParams() {
+  return [];
+}
 const Page: NextPage<PageProps> = async ({ searchParams, params }) => {
   // get number of fetches to perform from query parameter
   const fetches = parseInt(searchParams.fetches as string || '1');

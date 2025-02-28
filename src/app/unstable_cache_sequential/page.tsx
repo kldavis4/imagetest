@@ -8,6 +8,9 @@ interface PageProps {
   searchParams: { [key: string]: string | string[] | undefined };
   params: {}; // or Record<string, string | string[] | undefined> if you expect dynamic route params on other pages
 }
+export async function generateStaticParams() {
+  return [];
+}
 
 const test = async () => {
   const id = Math.random().toString(36).substring(7);
