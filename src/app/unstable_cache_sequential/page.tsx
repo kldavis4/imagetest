@@ -1,14 +1,12 @@
+import {NextPage} from "next";
+
 export const dynamic = 'force-dynamic'
 import { unstable_cache } from 'next/cache'
-import { useSearchParams } from 'next/navigation';
 
 const fakeFetch = unstable_cache(async (id: string) => Promise.resolve({ id }), ['my-id']);
 interface PageProps {
-  params: {
-    searchParams: {
-      [key: string]: string | string[] | undefined;
-    };
-  };
+  searchParams: { [key: string]: string | string[] | undefined };
+  params: {}; // or Record<string, string | string[] | undefined> if you expect dynamic route params on other pages
 }
 
 const test = async () => {
@@ -17,9 +15,7 @@ const test = async () => {
   const data = await fakeFetch(id);
   return Date.now() - start;
 }
-export default async function Page({ params }: PageProps) {
-  const searchParams = params.searchParams;
-
+const Page: NextPage<PageProps> = async ({ searchParams, params }) => {
   // get number of fetches to perform from query parameter
   const fetches = parseInt(searchParams.fetches as string || '1');
 
@@ -39,3 +35,4 @@ export default async function Page({ params }: PageProps) {
     </main>
   );
 }
+export default Page;
