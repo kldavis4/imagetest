@@ -21,16 +21,23 @@ const Page: NextPage<PageProps> = async ({ params }) => {
   const fetches = parseInt(fetchesParam || '1'); // Get fetches from params
 
   // initial query
+  const primeDurations = []
   for (let i = 0; i < fetches; i++) {
-    await test()
+    const result = await test()
+    primeDurations.push(result)
   }
 
   const durations = await Promise.all(Array(fetches).fill(0).map(async () => await test()));
   const duration = durations.join('ms, ');
+  const primeDuration = primeDurations.join('ms, ');
 
   return (
     <main>
       <div>
+        Priming (sequential):
+        {primeDuration}
+
+        Parallel:
         {duration}
       </div>
     </main>
