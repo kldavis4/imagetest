@@ -1,5 +1,7 @@
 export const dynamic = 'force-dynamic'
 import { unstable_cache } from 'next/cache'
+import { useSearchParams } from 'next/navigation';
+
 const fakeFetch = unstable_cache(async (id: string) => Promise.resolve({ id }), ['my-id']);
 
 const test = async () => {
@@ -9,14 +11,16 @@ const test = async () => {
   return Date.now() - start;
 }
 export default async function Page() {
+  const searchParams = useSearchParams();
   // get number of fetches to perform from query parameter
-  const fetches = parseInt(new URLSearchParams(location.search).get('fetches') || '1');
+  const fetches = parseInt(searchParams.get('fetches') || '1');
+
   // perform fetches sequentially
   const durations = [];
   for (let i = 0; i < fetches; i++) {
     durations.push(await test());
   }
-  
+
   // format as a list
   const duration = durations.join('ms, ');
   return (
