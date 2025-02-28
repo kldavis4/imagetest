@@ -34,11 +34,14 @@ const Page: NextPage<PageProps> = async ({ params }) => {
   return (
     <main>
       <div>
-        Priming (sequential):
-        {primeDuration}
-
-        Parallel:
-        {duration}
+        <div>
+          <h1>Priming (sequential)</h1>
+          {primeDuration}
+        </div>
+        <div>
+         <h1>Parallel</h1>
+          {duration}
+        </div>
       </div>
     </main>
   );
