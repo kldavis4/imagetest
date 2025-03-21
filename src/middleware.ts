@@ -28,6 +28,6 @@ export const config: {
   runtime?: 'nodejs' | 'edge';
 } = {
   // Matches any request
-  matcher: ['/*'],
+  matcher: '/:path*',
   runtime: 'nodejs',
 }
