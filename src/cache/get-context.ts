@@ -1,4 +1,4 @@
-import {cacheGet} from "@/app/runtimepoc/cache";
+import {cacheGet} from "@/cache/index";
 
 type Context = {
   cacheGet?: (key: string) => Promise<unknown>;

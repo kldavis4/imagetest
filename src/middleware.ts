@@ -1,7 +1,8 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
+import { cacheGet, cacheSet } from './cache';
 
-export function middleware(req: NextRequest) {
+export async function middleware(req: NextRequest) {
   // Check if the request is for a static asset in the public folder
   const { pathname } = req.nextUrl
   console.log(pathname)
@@ -11,6 +12,13 @@ export function middleware(req: NextRequest) {
     response.headers.set('ETag', 'CustomETagValue')
     response.headers.set('X-Custom-Header', 'CustomHeaderValue')
     return response
+  }
+
+  const cacheKey = req.nextUrl.toString()
+  const cachedResponse = await cacheGet(cacheKey)
+  console.log({cachedResponse})
+  if (!cachedResponse) {
+    await cacheSet(cacheKey, 'Hello World')
   }
 
   return NextResponse.next()

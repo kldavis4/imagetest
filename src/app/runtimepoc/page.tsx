@@ -1,4 +1,4 @@
-import { cacheGet, cacheSet } from './cache';
+import { cacheGet, cacheSet } from '../../cache';
 export const dynamic = 'force-dynamic'
 
 const test = async () => {
