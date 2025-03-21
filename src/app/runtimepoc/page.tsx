@@ -1,13 +1,11 @@
-// @ts-ignore
-import * as vercelFunctions from '@vercel/request-context';
+import { cacheGet, cacheSet } from './cache';
 export const dynamic = 'force-dynamic'
 
 const test = async () => {
-  console.log(vercelFunctions)
-  let val = await (vercelFunctions as any).cacheGet('my-id');
+  let val = await cacheGet('my-id');
   if (!val) {
     val = Math.random().toString(36).substring(7);
-    await (vercelFunctions as any).cacheSet('my-id', val);
+    await cacheSet('my-id', val);
   }
   return val
 }
