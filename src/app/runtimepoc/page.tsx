@@ -11,11 +11,11 @@ const test = async () => {
 }
 
 export default async function Page() {
-  const val = await test();
+  const val = await test() as any;
   return (
     <main>
       <div>
-        val
+        {val}
       </div>
     </main>
   );
