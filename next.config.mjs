@@ -18,6 +18,9 @@ const cmsRewrites = [
 ];
 
 const nextConfig = {
+    experimental: {
+       nodeMiddleware: true,
+    },
     images: {
         deviceSizes: [1024, 2048],
         domains: ['api.armenia.travel', 'cdn.sanity.io', 'www.campervannorway.com', 'cdn.sanity.io', 'en.wikipedia.org'],
