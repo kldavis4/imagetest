@@ -23,11 +23,3 @@ export async function middleware(req: NextRequest) {
 
   return NextResponse.next()
 }
-export const config: {
-  matcher: string | string[];
-  runtime?: 'nodejs' | 'edge';
-} = {
-  // Matches any request
-  matcher: '/:path*',
-  runtime: 'nodejs',
-}
