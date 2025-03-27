@@ -17,9 +17,9 @@ import { getContext } from './get-context';
  * ```
  */
 export const cacheGet = (key: string) => {
-  return getContext().cacheGet?.(key);
+  return getContext().cache?.get(key);
 };
 
 export const cacheSet = (key: string, value: unknown) => {
-  return getContext().cacheSet?.(key, value);
+  return getContext().cache?.set(key, value);
 }

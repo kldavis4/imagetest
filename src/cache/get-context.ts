@@ -1,8 +1,5 @@
-import {cacheGet} from "@/cache/index";
-
 type Context = {
-  cacheGet?: (key: string) => Promise<unknown>;
-  cacheSet?: (key: string, value: unknown) => Promise<void>;
+  cache?: { get: (key: string) => Promise<unknown>, set: (key: string, value: unknown) => Promise<void> };
   headers?: Record<string, string>;
 };
 
