@@ -1,7 +1,9 @@
 import Image from "next/image";
 import styles from "./page.module.css";
+import {NextRequest, NextResponse} from "next/server";
+import {cacheGet, cacheSet} from "@/cache";
 
-export default async function Home() {
+export default async function Home(request: NextRequest) {
   const images = []
   for (let i = 0; i < 2; i++) {
     images.push({
@@ -18,11 +20,35 @@ export default async function Home() {
       revalidate: 600
     }
   }).then((res) => res.json());
+
+  const key = request.nextUrl.searchParams.get("key") || "not-set";
+  const before = Date.now();
+  const fromCache = await cacheGet(key);
+  if (fromCache) {
+    return NextResponse.json({
+      cached: true,
+      readDuration: Date.now() - before,
+      key,
+      value: fromCache,
+    });
+  }
+  const value = new Date().toString();
+  const beforeWrite = Date.now();
+  await cacheSet(key, value);
+
   return (
     <main className={styles.main}>
 
       <div className={styles.grid}>
         <h1>UPDATE 6 {JSON.stringify(res)}</h1>
+        <div>
+          {JSON.stringify({
+          cached: true,
+          readDuration: Date.now() - before,
+          key,
+          value: fromCache,
+        })}
+        </div>
         {images.map((image, index) => (
           <div key={index} className={styles.card}>
             <Image {...image} />
