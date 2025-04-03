@@ -9,7 +9,7 @@ export default async function DynamicPage() {
     const res = await fetch(`http://api.lightbeans.com/organizations/banas-porcelain/products/${key}`, {
       next: {
         tags: ['homepage'],
-        revalidate: 600
+        revalidate: 86400
       }
     }).then((res) => res.json());
     results.push(res);
