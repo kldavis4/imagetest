@@ -1,3 +1,5 @@
+import { renderToString } from 'react-dom/server';
+
 // export const revalidate = 60;
 // TODO need source code
 export default async function Homepage() {
@@ -35,7 +37,7 @@ export default async function Homepage() {
         </main>
     );
 
-    return new Response(content, {
+    return new Response(renderToString(content), {
         status: 200,
         headers: {
             'Set-Cookie': 'cookie-name=cookie-value; HttpOnly; Secure; Max-Age=604800; Path=/',
