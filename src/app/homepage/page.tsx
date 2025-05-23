@@ -1,4 +1,3 @@
-import { cookies } from 'next/headers';
 // export const revalidate = 60;
 // TODO need source code
 export default async function Homepage() {
@@ -27,16 +26,7 @@ export default async function Homepage() {
         results.push(res);
     }
 
-    // Await the cookies function before using set
-    const cookieStore = await cookies();
-    cookieStore.set('cookie-name', 'cookie-value', {
-        httpOnly: true,
-        secure: process.env.NODE_ENV === 'production',
-        maxAge: 60 * 60 * 24 * 7, // 1 week
-        path: '/',
-    });
-
-    return (
+    const content = (
         <main>
             <>UPDATE 3</>
             <div>
@@ -44,4 +34,13 @@ export default async function Homepage() {
             </div>
         </main>
     );
+
+    return new Response(content, {
+        status: 200,
+        headers: {
+            'Set-Cookie': 'cookie-name=cookie-value; HttpOnly; Secure; Max-Age=604800; Path=/',
+            'Cache-Control': 'private, no-store, max-age=0',
+            'Content-Type': 'text/html; charset=utf-8',
+        },
+    })
 }
