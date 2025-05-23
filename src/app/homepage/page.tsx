@@ -1,4 +1,3 @@
-import { renderToString } from 'react-dom/server';
 
 // export const revalidate = 60;
 // TODO need source code
@@ -28,16 +27,8 @@ export default async function Homepage() {
         results.push(res);
     }
 
-    const content = (
-        <main>
-            <>UPDATE 3</>
-            <div>
-                {JSON.stringify(results)}
-            </div>
-        </main>
-    );
 
-    return new Response(renderToString(content), {
+    return new Response(`<div>HELLO: ${results.length}</div>`, {
         status: 200,
         headers: {
             'Set-Cookie': 'cookie-name=cookie-value; HttpOnly; Secure; Max-Age=604800; Path=/',
