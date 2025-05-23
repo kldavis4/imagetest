@@ -27,13 +27,14 @@ export default async function Homepage() {
         results.push(res);
     }
 
-    // Set a cookie
-    cookies().set('cookie-name', 'cookie-value', {
+    // Await the cookies function before using set
+    const cookieStore = await cookies();
+    cookieStore.set('cookie-name', 'cookie-value', {
         httpOnly: true,
         secure: process.env.NODE_ENV === 'production',
         maxAge: 60 * 60 * 24 * 7, // 1 week
         path: '/',
-    })
+    });
 
     return (
         <main>
