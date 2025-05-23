@@ -1,3 +1,4 @@
+import { cookies } from 'next/headers';
 // export const revalidate = 60;
 // TODO need source code
 export default async function Homepage() {
@@ -25,6 +26,14 @@ export default async function Homepage() {
         }).then((res) => res.json());
         results.push(res);
     }
+
+    // Set a cookie
+    cookies().set('cookie-name', 'cookie-value', {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === 'production',
+        maxAge: 60 * 60 * 24 * 7, // 1 week
+        path: '/',
+    })
 
     return (
         <main>
