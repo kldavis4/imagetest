@@ -1,4 +1,4 @@
-
+import { cookies } from 'next/headers';
 // export const revalidate = 60;
 // TODO need source code
 export default async function Homepage() {
@@ -27,13 +27,12 @@ export default async function Homepage() {
         results.push(res);
     }
 
-
-    return new Response(`<div>HELLO: ${results.length}</div>`, {
-        status: 200,
-        headers: {
-            'Set-Cookie': 'cookie-name=cookie-value; HttpOnly; Secure; Max-Age=604800; Path=/',
-            'Cache-Control': 'private, no-store, max-age=0',
-            'Content-Type': 'text/html; charset=utf-8',
-        },
-    })
+    return (
+        <main>
+            <>UPDATE 3</>
+            <div>
+                {JSON.stringify(results)}
+            </div>
+        </main>
+    );
 }
