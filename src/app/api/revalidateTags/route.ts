@@ -14,7 +14,7 @@ async function handleRevalidate(request: NextRequest) {
     tags.filter((tag) => tag)
       .forEach((tag) => {
         console.info('Revalidating tag:', tag)
-        revalidateTag(tag)
+        revalidateTag(tag, { expire: 0 });
       })
 
     console.log("Sleeping for: ", sleep)
